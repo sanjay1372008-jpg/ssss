@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090b17">
+<meta name="description" content="Cosmos Dome — contemporary fashion inspired by the universe. Discover premium apparel, cosmic streetwear and timeless essentials.">
+<title>Cosmos Dome — Wear Beyond Ordinary</title>
+<style>
+/* =========================================================
+   COSMOS DOME | MASTER DESIGN SYSTEM
+   HTML5 + CSS3 + Vanilla JavaScript ES6
+========================================================= */
+:root{
+ --bg:#f7f7fb;--surface:#fff;--surface2:#efeff7;--text:#17182b;
+ --muted:#707187;--accent:#7757e8;--accent2:#b5a2ff;--line:#e3e1ef;
+ --header:rgba(255,255,255,.86);--shadow:0 18px 55px rgba(25,19,68,.09);
+ --radius:22px;--max:1440px;--good:#16865d;
+}
+[data-theme="dark"]{
+ --bg:#090b17;--surface:#121529;--surface2:#191d35;--text:#f7f5ff;
+ --muted:#a7a7c2;--accent:#a18aff;--accent2:#5941ad;--line:#292c46;
+ --header:rgba(9,11,23,.86);--shadow:0 18px 55px rgba(0,0,0,.28);
+ --good:#69dfad;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Segoe UI",Arial,sans-serif;line-height:1.6;transition:background .3s,color .3s}
+body,button,input,select,textarea{font-family:Inter,"Segoe UI",Arial,sans-serif}
+button,input,select,textarea{font-size:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.container{width:min(var(--max),calc(100% - 48px));margin-inline:auto}
+.section{padding:94px 0}
+.section-sm{padding:58px 0}
+.eyebrow{font-size:.73rem;font-weight:800;text-transform:uppercase;letter-spacing:.19em;color:var(--accent)}
+h1,h2,h3,h4,p{margin-top:0}
+h1,h2,h3{line-height:1.08;letter-spacing:-.045em}
+h1{font-size:clamp(3rem,7vw,7.2rem);margin-bottom:24px}
+h2{font-size:clamp(2.15rem,4.5vw,4.4rem);margin-bottom:18px}
+h3{font-size:1.35rem}
+.lead{font-size:clamp(1rem,1.5vw,1.2rem);color:var(--muted);max-width:660px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:38px}
+.section-head p{max-width:520px;color:var(--muted);margin-bottom:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:49px;padding:13px 22px;border:1px solid transparent;border-radius:999px;font-weight:750;font-size:.9rem;transition:transform .25s,background .25s,border-color .25s;cursor:pointer}
+.btn:hover{transform:translateY(-3px)}
+.btn-primary{background:var(--accent);color:white}
+.btn-primary:hover{background:#6545d5}
+.btn-outline{border-color:var(--line);background:transparent;color:var(--text)}
+.btn-outline:hover{border-color:var(--accent)}
+.btn-dark{background:#111326;color:#fff}
+.icon-btn{display:grid;place-items:center;width:43px;height:43px;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:50%;position:relative}
+.icon-btn:hover{border-color:var(--accent);color:var(--accent)}
+.pill{display:inline-flex;align-items:center;padding:6px 11px;border-radius:99px;background:var(--surface2);color:var(--muted);font-size:.72rem;font-weight:800;letter-spacing:.04em}
+.muted{color:var(--muted)}
+.small{font-size:.83rem}
+.grid{display:grid;gap:22px}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.grid-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.surface{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+.card{overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);transition:transform .3s,box-shadow .3s,border-color .3s}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--accent2)}
+.card-body{padding:21px}
+.page{display:none;animation:pageIn .45s ease both}
+.page.active{display:block}
+@keyframes pageIn{from{opacity:.4;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes pulse{0%,100%{opacity:.65}50%{opacity:1}}
+@keyframes orbit{to{transform:rotate(360deg)}}
+@keyframes shimmer{to{background-position:-200% center}}
+.reveal{animation:pageIn .6s ease both}
+.skip-link{position:absolute;top:-100px;left:12px;z-index:999;background:var(--surface);padding:12px}
+.skip-link:focus{top:12px}
+.top-strip{background:#111326;color:#fff;text-align:center;padding:9px 16px;font-size:.75rem;letter-spacing:.08em}
+.top-strip strong{color:#c9bbff}
+.site-header{position:sticky;top:0;z-index:100;background:var(--header);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.navbar{height:82px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;flex-shrink:0}
+.brand-mark{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:white;font-size:1.3rem;background:radial-gradient(circle at 30% 25%,#c8b7ff,#7451e8 50%,#17112d 100%);box-shadow:0 0 25px #8565e44a}
+.brand-name{font-size:1.02rem;font-weight:900;letter-spacing:.12em;line-height:1.15}
+.brand-name span{display:block;font-size:.57rem;font-weight:650;letter-spacing:.31em;margin-top:4px;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:23px}
+.nav-links a{font-size:.82rem;font-weight:700;color:var(--muted);transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--accent)}
+.nav-actions{display:flex;align-items:center;gap:9px}
+.cart-count{position:absolute;right:-4px;top:-4px;min-width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#fff;font-size:.65rem;font-weight:900}
+.menu-toggle{display:none}
+.hero{position:relative;min-height:680px;display:flex;align-items:center;overflow:hidden;background:#101123;color:white}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,9,23,.96) 0%,rgba(8,9,23,.72) 47%,rgba(8,9,23,.12) 100%),linear-gradient(0deg,rgba(8,9,23,.5),transparent 50%)}
+.hero-content{position:relative;z-index:2;padding:100px 0;width:min(850px,100%)}
+.hero h1 span{color:#b8a5ff}
+.hero .lead{color:#dedcf0;max-width:590px;margin-bottom:30px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero .eyebrow{color:#c4b5ff}
+.hero-meta{display:flex;gap:28px;flex-wrap:wrap;margin-top:55px;color:#d1cfe0;font-size:.77rem}
+.hero-meta strong{display:block;color:white;font-size:1.18rem}
+.hero-orbit{position:absolute;right:8%;top:19%;width:300px;height:300px;border:1px solid #c8b8ff66;border-radius:50%;animation:orbit 35s linear infinite}
+.hero-orbit:before,.hero-orbit:after{content:"";position:absolute;border:1px solid #c8b8ff55;border-radius:50%;inset:35px}
+.hero-orbit:after{inset:80px;background:radial-gradient(circle,#b5a1ff3d,transparent 70%)}
+.hero-orbit i{position:absolute;top:45px;left:18px;width:12px;height:12px;background:#d7caff;border-radius:50%;box-shadow:0 0 25px #b5a1ff}
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding:17px 0;background:var(--surface)}
+.marquee-track{display:flex;gap:38px;width:max-content;animation:marquee 32s linear infinite;font-size:.77rem;font-weight:850;letter-spacing:.2em;color:var(--muted)}
+.marquee-track span{white-space:nowrap}
+.marquee-track b{color:var(--accent)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.category-card{position:relative;min-height:310px;overflow:hidden;border-radius:var(--radius);background:#17182d;color:white}
+.category-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.category-card:hover img{transform:scale(1.07)}
+.category-card:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#08091ae8,transparent 72%)}
+.category-info{position:absolute;z-index:2;bottom:22px;left:22px;right:22px}
+.category-info h3{margin:0 0 7px}
+.category-info p{margin:0;color:#dedbec;font-size:.82rem}
+.product-image{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--surface2)}
+.product-image img{width:100%;height:100%;object-fit:cover;transition:transform .55s}
+.product-card:hover .product-image img{transform:scale(1.06)}
+.product-badge{position:absolute;top:13px;left:13px;z-index:2;background:var(--surface);color:var(--text);border-radius:99px;padding:6px 10px;font-size:.68rem;font-weight:850}
+.product-heart{position:absolute;right:12px;top:12px;z-index:2}
+.product-heart.saved{background:var(--accent);color:white}
+.product-info{padding:16px}
+.product-info h3{font-size:1rem;letter-spacing:-.02em;margin:0 0 7px}
+.product-info .muted{font-size:.79rem}
+.price-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px}
+.price{font-weight:900;font-size:1.04rem}
+.old-price{font-size:.8rem;color:var(--muted);text-decoration:line-through;margin-left:5px}
+.product-colors{display:flex;gap:6px;margin-top:11px}
+.color-dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line)}
+.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:26px}
+.field{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--text)}
+.field::placeholder{color:var(--muted)}
+.search-field{max-width:320px}
+.select-field{max-width:190px}
+.filter-btn{padding:10px 15px;border:1px solid var(--line);background:var(--surface);border-radius:99px;color:var(--muted);font-size:.8rem;font-weight:750}
+.filter-btn.active{background:var(--accent);color:white;border-color:var(--accent)}
+.banner{position:relative;overflow:hidden;border-radius:30px;background:#17152d;color:#fff;min-height:360px;display:flex;align-items:center;padding:55px}
+.banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.banner-content{position:relative;max-width:620px}
+.banner h2{font-size:clamp(2.4rem,5vw,4.5rem)}
+.banner p{color:#dedbed}
+.empty-state{padding:60px 20px;text-align:center;border:1px dashed var(--line);border-radius:var(--radius);color:var(--muted)}
+hr{border:0;border-top:1px solid var(--line);margin:28px 0}/* =========================================================
+   ADDITIONAL RESPONSIVE COMPONENT STYLES
+========================================================= */
+.promo-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}
+.promo-card{min-height:300px;position:relative;overflow:hidden;border-radius:var(--radius);background:var(--surface2)}
+.promo-card img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;transition:transform .5s}
+.promo-card:hover img{transform:scale(1.04)}
+.promo-copy{position:absolute;inset:auto 0 0;padding:28px;background:linear-gradient(0deg,#0a0a1be8,transparent);color:white}
+.promo-copy p{color:#dedbed;margin:0}
+.split-layout{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.split-image{position:relative;min-height:490px;border-radius:28px;overflow:hidden;background:var(--surface2)}
+.split-image img{width:100%;height:100%;min-height:490px;object-fit:cover}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--line)}
+.stat-item{padding:30px 20px;text-align:center;background:var(--surface)}
+.stat-item strong{display:block;font-size:clamp(1.8rem,3vw,3rem);letter-spacing:-.05em}
+.stat-item span{font-size:.8rem;color:var(--muted)}
+.review-card{padding:28px}
+.stars{color:#f2b84b;letter-spacing:3px}
+.quote-mark{font-size:3rem;color:var(--accent);line-height:1}
+.avatar{width:45px;height:45px;object-fit:cover;border-radius:50%;background:var(--surface2)}
+.review-author{display:flex;align-items:center;gap:12px;margin-top:22px}
+.review-author strong{display:block;font-size:.86rem}
+.review-author span{display:block;font-size:.75rem;color:var(--muted)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-question{width:100%;display:flex;justify-content:space-between;gap:20px;text-align:left;padding:22px 0;border:0;background:none;color:var(--text);font-weight:800}
+.faq-answer{display:none;color:var(--muted);padding:0 35px 22px 0}
+.faq-item.open .faq-answer{display:block}
+.faq-item.open .faq-question span:last-child{transform:rotate(45deg)}
+.footer{background:#101123;color:white;padding:75px 0 25px}
+.footer .brand-name span{color:#b6b4ca}
+.footer-grid{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:42px}
+.footer h3{font-size:.85rem;letter-spacing:.06em;margin-bottom:18px}
+.footer p,.footer a{font-size:.83rem;color:#b6b4ca}
+.footer-links{display:grid;gap:11px}
+.footer a:hover{color:#c4b5ff}
+.footer-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid #33344a;margin-top:50px;padding-top:22px;color:#aaa9c2;font-size:.75rem}
+.newsletter{display:flex;gap:8px;max-width:470px}
+.newsletter input{min-width:0;flex:1}
+.toast{position:fixed;z-index:300;bottom:25px;left:50%;transform:translate(-50%,25px);opacity:0;pointer-events:none;background:#17182b;color:white;padding:14px 22px;border-radius:99px;box-shadow:var(--shadow);font-size:.85rem;transition:.3s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.modal-backdrop{position:fixed;inset:0;z-index:250;background:#050611bd;backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;padding:20px}
+.modal-backdrop.open{display:flex}
+.modal{position:relative;width:min(680px,100%);max-height:90vh;overflow:auto;background:var(--surface);border:1px solid var(--line);color:var(--text);border-radius:24px;padding:30px;animation:pageIn .25s ease}
+.modal-close{position:absolute;right:16px;top:16px}
+.modal h2{font-size:2rem;padding-right:40px}
+.modal-image{width:100%;max-height:370px;object-fit:cover;border-radius:15px;margin:15px 0}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.form-group{display:grid;gap:7px;margin-bottom:15px}
+.form-group label{font-size:.82rem;font-weight:750}
+.form-note{font-size:.77rem;color:var(--muted)}
+.size-options{display:flex;gap:9px;flex-wrap:wrap}
+.size-option{width:43px;height:43px;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:10px}
+.size-option.active{background:var(--accent);color:white;border-color:var(--accent)}
+.cart-drawer{position:fixed;z-index:220;inset:0;pointer-events:none}
+.cart-drawer.open{pointer-events:auto}
+.cart-shade{position:absolute;inset:0;background:#050611a8;opacity:0;transition:.3s}
+.cart-drawer.open .cart-shade{opacity:1}
+.cart-panel{position:absolute;right:0;top:0;height:100%;width:min(440px,100%);background:var(--surface);color:var(--text);padding:26px;transform:translateX(105%);transition:transform .35s;display:flex;flex-direction:column}
+.cart-drawer.open .cart-panel{transform:translateX(0)}
+.cart-items{overflow:auto;flex:1}
+.cart-line{display:grid;grid-template-columns:76px 1fr auto;gap:13px;padding:15px 0;border-bottom:1px solid var(--line)}
+.cart-line img{width:76px;height:95px;object-fit:cover;border-radius:10px}
+.qty-controls{display:flex;align-items:center;gap:10px;margin-top:8px}
+.qty-controls button{width:27px;height:27px;border:1px solid var(--line);background:var(--surface2);color:var(--text);border-radius:50%}
+.cart-total{display:flex;justify-content:space-between;font-size:1.1rem;font-weight:900;padding:20px 0}
+.notice{padding:14px 17px;background:var(--surface2);border-radius:12px;color:var(--muted);font-size:.83rem}
+.lookbook-grid{columns:3;column-gap:18px}
+.lookbook-item{break-inside:avoid;position:relative;margin-bottom:18px;overflow:hidden;border-radius:18px;background:var(--surface2);cursor:pointer}
+.lookbook-item img{width:100%;height:auto;min-height:180px;object-fit:cover;transition:transform .5s}
+.lookbook-item:hover img{transform:scale(1.04)}
+.lookbook-caption{position:absolute;bottom:0;left:0;right:0;padding:22px 15px 15px;background:linear-gradient(transparent,#080817ce);color:white;font-size:.85rem;font-weight:800}
+.size-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.size-table th,.size-table td{padding:13px;border-bottom:1px solid var(--line);text-align:left}
+.size-table th{color:var(--accent)}
+.policy-block{padding:25px;border-bottom:1px solid var(--line)}
+.policy-block p{color:var(--muted)}
+.back-top{position:fixed;bottom:25px;right:22px;z-index:90;width:45px;height:45px;border-radius:50%;background:var(--accent);color:white;border:0;box-shadow:var(--shadow);display:none}
+.back-top.visible{display:grid;place-items:center}
+@media(max-width:1050px){
+ .nav-links{gap:13px}.nav-links a{font-size:.75rem}
+ .grid-5{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .footer-grid{grid-template-columns:repeat(2,1fr)}
+ .hero-orbit{right:-100px;opacity:.5}
+}
+@media(max-width:760px){
+ .container{width:min(100% - 30px,var(--max))}
+ .section{padding:66px 0}.section-sm{padding:42px 0}
+ .navbar{height:70px}.menu-toggle{display:grid}
+ .nav-links{position:absolute;left:0;right:0;top:70px;padding:18px 22px 25px;background:var(--surface);border-bottom:1px solid var(--line);display:none;align-items:stretch;gap:0}
+ .nav-links.open{display:flex;flex-direction:column}
+ .nav-links a{padding:12px 0;border-bottom:1px solid var(--line);font-size:.9rem}
+ .nav-actions{gap:6px}.brand-name{font-size:.9rem}
+ .hero{min-height:650px}.hero-content{padding:75px 0}
+ .hero-orbit{width:200px;height:200px;top:8%;right:-95px}
+ .hero-meta{margin-top:35px;gap:18px}
+ .section-head{align-items:flex-start;flex-direction:column}
+ .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .grid-5{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .promo-grid,.split-layout{grid-template-columns:1fr;gap:25px}
+ .split-image,.split-image img{min-height:340px}
+ .stat-grid{grid-template-columns:repeat(2,1fr)}
+ .banner{padding:30px;min-height:350px}
+ .lookbook-grid{columns:2}
+ .footer-grid{gap:30px}
+}
+@media(max-width:460px){
+ .grid-2,.grid-3,.grid-4,.grid-5{grid-template-columns:1fr}
+ .product-image{aspect-ratio:4/4.5}
+ .hero h1{font-size:3.2rem}
+ .hero-actions .btn{width:100%}
+ .hero-meta{display:grid;grid-template-columns:repeat(2,1fr)}
+ .nav-actions .hide-mobile{display:none}
+ .brand-mark{width:35px;height:35px}
+ .form-grid{grid-template-columns:1fr}
+ .footer-grid{grid-template-columns:1fr 1fr}
+ .footer-grid>div:first-child{grid-column:1/-1}
+ .lookbook-grid{columns:1}
+ .newsletter{flex-direction:column}
+ .newsletter .btn{width:100%}
+ .card-body{padding:17px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="top-strip">THE COSMIC EDIT IS HERE <strong>— UP TO 30% OFF SELECT STYLES</strong> · DEMO PROMOTION</div>
+
+<header class="site-header">
+ <div class="container navbar">
+  <a class="brand" href="#home" aria-label="Cosmos Dome home">
+   <span class="brand-mark">✦</span>
+   <span class="brand-name">COSMOS DOME<span>WEAR BEYOND ORDINARY</span></span>
+  </a>
+  <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+   <a href="#home" data-route="home">Home</a>
+   <a href="#shop" data-route="shop">Shop</a>
+   <a href="#collections" data-route="collections">Collections</a>
+   <a href="#lookbook" data-route="lookbook">Lookbook</a>
+   <a href="#about" data-route="about">Our Story</a>
+   <a href="#journal" data-route="journal">Journal</a>
+   <a href="#contact" data-route="contact">Contact</a>
+  </nav>
+  <div class="nav-actions">
+   <button class="icon-btn" id="themeToggle" aria-label="Switch color theme" title="Switch theme">☾</button>
+   <button class="icon-btn hide-mobile" id="searchOpen" aria-label="Search products" title="Search">⌕</button>
+   <button class="icon-btn" id="wishlistNav" aria-label="Open wishlist" title="Wishlist">♡</button>
+   <button class="icon-btn" id="cartOpen" aria-label="Open shopping cart" title="Shopping cart">♧<span class="cart-count" id="cartCount">0</span></button>
+   <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+  </div>
+ </div>
+</header>
+
+<main id="main">
+<!-- PAGE 1: HOME -->
+<section class="page active" id="page-home" data-page="home">
+ <div class="hero">
+  <img class="hero-bg" src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=2200&q=85" alt="Editorial fashion campaign in a dramatic setting" fetchpriority="high">
+  <div class="hero-overlay"></div><div class="hero-orbit" aria-hidden="true"><i></i></div>
+  <div class="container hero-content">
+   <span class="eyebrow">THE FUTURE OF EVERYDAY STYLE</span>
+   <h1>Wear beyond<br>the <span>ordinary.</span></h1>
+   <p class="lead">A new orbit of contemporary fashion. Discover expressive silhouettes, elevated essentials and statement pieces designed for wherever life takes you.</p>
+   <div class="hero-actions">
+    <a href="#shop" class="btn btn-primary">Explore the collection ↗</a>
+    <a href="#lookbook" class="btn btn-outline" style="color:white;border-color:#ffffff70">View lookbook</a>
+   </div>
+   <div class="hero-meta">
+    <div><strong>01 / 08</strong>Explore the brand</div>
+    <div><strong>Cosmic Edit</strong>Seasonal collection</div>
+    <div><strong>Designed to express</strong>Style without boundaries</div>
+   </div>
+  </div>
+ </div>
+ <div class="marquee" aria-label="Brand collection highlights"><div class="marquee-track">
+  <span>✦ COSMIC STREETWEAR</span><b>✧</b><span>DESIGNED FOR YOUR ORBIT</span><b>✧</b><span>MODERN ESSENTIALS</span><b>✧</b><span>EXPRESS YOUR UNIVERSE</span><b>✧</b><span>COSMIC STREETWEAR</span><b>✧</b><span>DESIGNED FOR YOUR ORBIT</span><b>✧</b><span>MODERN ESSENTIALS</span><b>✧</b><span>EXPRESS YOUR UNIVERSE</span>
+ </div></div>
+ <div class="container section">
+  <div class="section-head"><div><span class="eyebrow">EXPLORE YOUR ORBIT</span><h2>Find your frequency.</h2></div><p>From quiet essentials to bold statement pieces, discover the styles that feel unmistakably you.</p></div>
+  <div class="grid grid-3">
+   <a class="category-card" href="#shop" data-filter-link="Outerwear"><img loading="lazy" src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=900&q=80" alt="Contemporary leather jacket"><div class="category-info"><h3>Outerwear</h3><p>Layer up. Stand out. ↗</p></div></a>
+   <a class="category-card" href="#shop" data-filter-link="Essentials"><img loading="lazy" src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80" alt="Minimal premium T-shirt"><div class="category-info"><h3>Everyday Essentials</h3><p>The foundation of your style. ↗</p></div></a>
+   <a class="category-card" href="#shop" data-filter-link="Streetwear"><img loading="lazy" src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80" alt="Modern streetwear editorial outfit"><div class="category-info"><h3>Streetwear</h3><p>Make your own rules. ↗</p></div></a>
+  </div>
+ </div>
+ <div class="container section-sm">
+  <div class="section-head"><div><span class="eyebrow">THE NEW ARRIVALS</span><h2>Just landed.</h2></div><a href="#shop" class="btn btn-outline">Shop all pieces ↗</a></div>
+  <div class="grid grid-4" id="homeProducts"></div>
+ </div>
+ <div class="container section">
+  <div class="banner"><img loading="lazy" src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1600&q=85" alt="Fashion-forward friends exploring contemporary city style"><div class="banner-content"><span class="eyebrow">THE COSMIC EDIT · 2026</span><h2>Your style.<br>Your universe.</h2><p>Unexpected combinations. Considered design. Pieces that bring your personal universe into focus.</p><a class="btn btn-primary" href="#collections">Discover the edit ↗</a></div></div>
+ </div>
+ <div class="container section-sm">
+  <div class="stat-grid">
+   <div class="stat-item"><strong data-count="08">08</strong><span>Curated experiences</span></div>
+   <div class="stat-item"><strong data-count="24">24</strong><span>Demo product styles</span></div>
+   <div class="stat-item"><strong>∞</strong><span>Ways to express yourself</span></div>
+   <div class="stat-item"><strong>01</strong><span>Your own universe</span></div>
+  </div>
+  <p class="form-note" style="margin-top:12px">Brand figures and product availability on this concept website are illustrative demo content.</p>
+ </div>
+</section>
+
+<!-- PAGE 2: SHOP -->
+<section class="page" id="page-shop" data-page="shop">
+ <div class="container section">
+  <span class="eyebrow">THE COSMOS STORE</span><h1 style="font-size:clamp(3rem,6vw,5.8rem)">The collection<span style="color:var(--accent)">.</span></h1>
+  <p class="lead">Considered silhouettes, tactile textures and contemporary essentials for every day in your universe.</p>
+  <div class="toolbar" style="margin-top:32px">
+   <input class="field search-field" id="productSearch" type="search" placeholder="Search the collection..." aria-label="Search products">
+   <select class="field select-field" id="categoryFilter" aria-label="Filter by category"><option value="All">All categories</option><option>Essentials</option><option>Streetwear</option><option>Outerwear</option><option>Accessories</option></select>
+   <select class="field select-field" id="sortFilter" aria-label="Sort products"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="name">Name A–Z</option></select>
+   <span class="muted small" id="resultCount" aria-live="polite"></span>
+  </div>
+  <div class="toolbar" id="quickFilters">
+   <button class="filter-btn active" data-category="All">All pieces</button>
+   <button class="filter-btn" data-category="Essentials">Essentials</button>
+   <button class="filter-btn" data-category="Streetwear">Streetwear</button>
+   <button class="filter-btn" data-category="Outerwear">Outerwear</button>
+   <button class="filter-btn" data-category="Accessories">Accessories</button>
+  </div>
+  <div class="grid grid-4" id="shopProducts"></div>
+  <div id="shopEmpty" class="empty-state" hidden><h3>No pieces found in this orbit.</h3><p>Try another search or clear the category filter.</p><button class="btn btn-outline" id="clearFilters">Clear filters</button></div>
+  <p class="form-note" style="margin-top:20px">Demo store: products, pricing, stock and checkout are illustrative. No real order or payment is processed.</p>
+ </div>
+ <div class="container section-sm"><div class="banner"><img loading="lazy" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1500&q=80" alt="Contemporary editorial outfit in a minimalist fashion campaign"><div class="banner-content"><span class="eyebrow">STYLE IS PERSONAL</span><h2>Break the pattern.</h2><p>Find the silhouette that tells your story.</p><a href="#lookbook" class="btn btn-primary">Get inspired ↗</a></div></div></div>
+</section>
+
+<!-- PAGE 3: COLLECTIONS -->
+<section class="page" id="page-collections" data-page="collections">
+ <div class="container section">
+  <span class="eyebrow">CURATED FOR YOUR WORLD</span><h1 style="font-size:clamp(3rem,6vw,5.7rem)">Collections in orbit.</h1>
+  <p class="lead">Explore a considered wardrobe built around the way you move, create and express yourself.</p>
+  <div class="grid grid-2" style="margin-top:40px">
+   <article class="promo-card"><img loading="lazy" src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1200&q=85" alt="Minimal everyday fashion collection"><div class="promo-copy"><span class="eyebrow">01 / DAILY UNIFORM</span><h2>Modern essentials.</h2><p>Reliable foundations, reimagined.</p><a href="#shop" class="btn btn-primary" style="margin-top:15px">Shop essentials ↗</a></div></article>
+   <article class="promo-card"><img loading="lazy" src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85" alt="Expressive contemporary streetwear"><div class="promo-copy"><span class="eyebrow">02 / URBAN ORBIT</span><h2>Street culture.</h2><p>Expressive pieces with a new perspective.</p><a href="#shop" class="btn btn-primary" style="margin-top:15px">Explore streetwear ↗</a></div></article>
+   <article class="promo-card"><img loading="lazy" src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?auto=format&fit=crop&w=1200&q=85" alt="Layered contemporary outerwear"><div class="promo-copy"><span class="eyebrow">03 / OUTER DIMENSION</span><h2>Layer with intent.</h2><p>Texture, structure and modern proportions.</p><a href="#shop" class="btn btn-primary" style="margin-top:15px">Discover outerwear ↗</a></div></article>
+   <article class="promo-card"><img loading="lazy" src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1200&q=85" alt="Minimal accessories with refined details"><div class="promo-copy"><span class="eyebrow">04 / FINISHING TOUCHES</span><h2>Small details. Big energy.</h2><p>Accessories that complete the picture.</p><a href="#shop" class="btn btn-primary" style="margin-top:15px">Explore accessories ↗</a></div></article>
+  </div>
+ </div>
+ <div class="container section-sm"><div class="section-head"><div><span class="eyebrow">SHOP THE SEASON</span><h2>Curated favorites.</h2></div><a href="#shop" class="btn btn-outline">View catalog ↗</a></div><div class="grid grid-4" id="collectionProducts"></div></div>
+</section>
+
+<!-- PAGE 4: LOOKBOOK -->
+<section class="page" id="page-lookbook" data-page="lookbook">
+ <div class="container section">
+  <span class="eyebrow">VISUAL STORIES · VOL. 01</span><h1 style="font-size:clamp(3rem,6vw,5.7rem)">The art of your orbit.</h1>
+  <p class="lead">A visual exploration of form, movement, texture and personal style. Tap an image to view it in detail.</p>
+  <div class="lookbook-grid" id="lookbookGrid" style="margin-top:38px">
+   <div class="lookbook-item" data-image="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1600&q=90"><img loading="lazy" src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=900&q=80" alt="Cosmos editorial fashion portrait"><div class="lookbook-caption">01 — Beyond the horizon</div></div>
+   <div class="lookbook-item" data-image="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1600&q=90"><img loading="lazy" src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80" alt="Modern streetwear style"><div class="lookbook-caption">02 — City frequency</div></div>
+   <div class="lookbook-item" data-image="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1600&q=90"><img loading="lazy" src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80" alt="Friends wearing expressive fashion"><div class="lookbook-caption">03 — In good company</div></div>
+   <div class="lookbook-item" data-image="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1600&q=90"><img loading="lazy" src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=900&q=80" alt="Outerwear detail"><div class="lookbook-caption">04 — Texture studies</div></div>
+   <div class="lookbook-item" data-image="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1600&q=90"><img loading="lazy" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80" alt="Contemporary silhouette in warm light"><div class="lookbook-caption">05 — Quiet confidence</div></div>
+   <div class="lookbook-item" data-image="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1600&q=90"><img loading="lazy" src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80" alt="Minimal wardrobe essential"><div class="lookbook-caption">06 — Everyday icon</div></div>
+   <div class="lookbook-item" data-image="https://images.unsplash.com/photo-1544022613-e87ca75a784a?auto=format&fit=crop&w=1600&q=90"><img loading="lazy" src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?auto=format&fit=crop&w=900&q=80" alt="Modern layered outfit"><div class="lookbook-caption">07 — Layers of expression</div></div>
+   <div class="lookbook-item" data-image="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1600&q=90"><img loading="lazy" src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=900&q=80" alt="Neutral contemporary clothing"><div class="lookbook-caption">08 — Less, but better</div></div>
+   <div class="lookbook-item" data-image="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1600&q=90"><img loading="lazy" src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=900&q=80" alt="Fashion editorial detail"><div class="lookbook-caption">09 — The new perspective</div></div>
+  </div>
+  <p class="form-note" style="margin-top:20px">Editorial imagery is used for concept presentation; actual product colors and fit may vary.</p>
+ </div>
+</section>
+
+<!-- PAGE 5: OUR STORY -->
+<section class="page" id="page-about" data-page="about">
+ <div class="container section">
+  <div class="split-layout">
+   <div><span class="eyebrow">OUR POINT OF VIEW</span><h1 style="font-size:clamp(3.2rem,6vw,5.7rem)">Fashion has no gravity.</h1><p class="lead">Cosmos Dome is a concept fashion label built around one idea: the most interesting style begins when you stop following a fixed orbit.</p><p class="muted">We bring together modern silhouettes, considered details and the energy of contemporary street culture. Our visual world draws inspiration from deep space, city lights and the limitless nature of personal expression.</p><p class="muted">This demo presents a brand concept. It does not represent verified manufacturing claims, certifications or a currently operating retail company.</p><a href="#collections" class="btn btn-primary">Explore our collections ↗</a></div>
+   <div class="split-image"><img loading="lazy" src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1100&q=85" alt="Contemporary fashion editorial reflecting individual expression"></div>
+  </div>
+ </div>
+ <div class="container section-sm">
+  <div class="section-head"><div><span class="eyebrow">THE COSMOS CODE</span><h2>What we stand for.</h2></div><p>Four principles guide this brand concept, from the first sketch to the final look.</p></div>
+  <div class="grid grid-4">
+   <article class="card card-body"><span class="eyebrow">01 / EXPRESSION</span><h3>Be unmistakably you.</h3><p class="muted small">Style is a language. Make it your own.</p></article>
+   <article class="card card-body"><span class="eyebrow">02 / DESIGN</span><h3>Details matter.</h3><p class="muted small">Shape, texture and proportion work together.</p></article>
+   <article class="card card-body"><span class="eyebrow">03 / VERSATILITY</span><h3>Made to combine.</h3><p class="muted small">Build a wardrobe that moves with you.</p></article>
+   <article class="card card-body"><span class="eyebrow">04 / CURIOSITY</span><h3>Keep exploring.</h3><p class="muted small">The next idea is always beyond the horizon.</p></article>
+  </div>
+ </div>
+ <div class="container section">
+  <div class="section-head"><div><span class="eyebrow">THE DETAILS</span><h2>Design with intention.</h2></div></div>
+  <div class="grid grid-3">
+   <article class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=850&q=80" alt="Garment texture and construction" style="width:100%;height:240px;object-fit:cover"><div class="card-body"><h3>Considered forms</h3><p class="muted small">Silhouettes that balance shape, comfort and personality.</p></div></article>
+   <article class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=850&q=80" alt="Essential wardrobe pieces" style="width:100%;height:240px;object-fit:cover"><div class="card-body"><h3>Everyday foundations</h3><p class="muted small">Versatile pieces designed to work across different looks.</p></div></article>
+   <article class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=850&q=80" alt="Fashion campaign styling" style="width:100%;height:240px;object-fit:cover"><div class="card-body"><h3>Personal expression</h3><p class="muted small">A visual identity that leaves space for your own.</p></div></article>
+  </div>
+ </div>
+</section>
+
+<!-- PAGE 6: JOURNAL -->
+<section class="page" id="page-journal" data-page="journal">
+ <div class="container section">
+  <span class="eyebrow">THE COSMOS JOURNAL</span><h1 style="font-size:clamp(3rem,6vw,5.7rem)">Notes from our orbit.</h1>
+  <p class="lead">Style ideas, wardrobe perspectives and inspiration for building a look that feels personal.</p>
+  <div class="grid grid-3" style="margin-top:40px">
+   <article class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80" alt="Fashion editorial outfit" style="width:100%;height:280px;object-fit:cover"><div class="card-body"><span class="eyebrow">STYLE NOTES · 5 MIN READ</span><h3>Build a wardrobe that feels like you</h3><p class="muted small">Start with the pieces you reach for most. A personal wardrobe grows from real habits, not rigid rules.</p><button class="btn btn-outline article-open" data-article="wardrobe">Read the story ↗</button></div></article>
+   <article class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80" alt="Streetwear editorial styling" style="width:100%;height:280px;object-fit:cover"><div class="card-body"><span class="eyebrow">CULTURE · 4 MIN READ</span><h3>The art of unexpected combinations</h3><p class="muted small">Mix proportions, contrast textures and let one distinctive detail lead the look.</p><button class="btn btn-outline article-open" data-article="combinations">Read the story ↗</button></div></article>
+   <article class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=900&q=80" alt="Minimal everyday clothing" style="width:100%;height:280px;object-fit:cover"><div class="card-body"><span class="eyebrow">ESSENTIALS · 3 MIN READ</span><h3>Why the simplest pieces work hard</h3><p class="muted small">Versatile basics create more combinations and give statement pieces room to shine.</p><button class="btn btn-outline article-open" data-article="essentials">Read the story ↗</button></div></article>
+   <article class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?auto=format&fit=crop&w=900&q=80" alt="Layered fashion" style="width:100%;height:260px;object-fit:cover"><div class="card-body"><span class="eyebrow">HOW TO · 4 MIN READ</span><h3>Layering without the bulk</h3><p class="muted small">Use lighter base layers, purposeful proportions and a clear focal point.</p><button class="btn btn-outline article-open" data-article="layering">Read the story ↗</button></div></article>
+   <article class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=900&q=80" alt="Contemporary clothing collection" style="width:100%;height:260px;object-fit:cover"><div class="card-body"><span class="eyebrow">WARDROBE · 6 MIN READ</span><h3>Finding your signature silhouette</h3><p class="muted small">Notice the shapes, lengths and fits you naturally feel confident wearing.</p><button class="btn btn-outline article-open" data-article="silhouette">Read the story ↗</button></div></article>
+   <article class="card"><img loading="lazy" src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80" alt="Friends in contemporary fashion" style="width:100%;height:260px;object-fit:cover"><div class="card-body"><span class="eyebrow">INSPIRATION · 3 MIN READ</span><h3>Dress for the day you want</h3><p class="muted small">A thoughtful outfit can be a small, practical way to set your own tone.</p><button class="btn btn-outline article-open" data-article="inspiration">Read the story ↗</button></div></article>
+  </div>
+  <p class="form-note" style="margin-top:20px">The Cosmos Journal contains original sample editorial content for this website concept.</p>
+ </div>
+</section>
+
+<!-- PAGE 7: WISHLIST & STYLE GUIDE -->
+<section class="page" id="page-wishlist" data-page="wishlist">
+ <div class="container section">
+  <span class="eyebrow">YOUR PERSONAL EDIT</span><h1 style="font-size:clamp(3rem,6vw,5.7rem)">Saved for later.</h1>
+  <p class="lead">Your personal collection of pieces worth another look.</p>
+  <div class="grid grid-4" id="wishlistProducts" style="margin-top:35px"></div>
+  <div class="empty-state" id="wishlistEmpty"><h3>Your wishlist starts here.</h3><p>Explore the shop and tap the heart on a product to save it.</p><a class="btn btn-primary" href="#shop">Explore the shop ↗</a></div>
+ </div>
+ <div class="container section-sm">
+  <div class="section-head"><div><span class="eyebrow">YOUR FIT, YOUR WAY</span><h2>Size guide.</h2></div><p>A general apparel sizing reference. Check individual product details before making a real purchase.</p></div>
+  <div class="surface" style="padding:18px;overflow-x:auto">
+   <table class="size-table"><thead><tr><th>Size</th><th>Chest (cm)</th><th>Waist (cm)</th><th>Hip (cm)</th><th>General fit</th></tr></thead><tbody>
+    <tr><td>XS</td><td>82–88</td><td>66–72</td><td>84–90</td><td>Extra small</td></tr>
+    <tr><td>S</td><td>88–94</td><td>72–78</td><td>90–96</td><td>Small</td></tr>
+    <tr><td>M</td><td>94–100</td><td>78–84</td><td>96–102</td><td>Medium</td></tr>
+    <tr><td>L</td><td>100–108</td><td>84–92</td><td>102–110</td><td>Large</td></tr>
+    <tr><td>XL</td><td>108–116</td><td>92–100</td><td>110–118</td><td>Extra large</td></tr>
+   </tbody></table>
+  </div>
+  <p class="form-note" style="margin-top:12px">Illustrative size guide only. Measurements and fit vary by garment and manufacturer.</p>
+ </div>
+ <div class="container section">
+  <div class="section-head"><div><span class="eyebrow">A FEW HELPFUL ANSWERS</span><h2>Frequently asked questions.</h2></div></div>
+  <div class="grid grid-2">
+   <div id="faqList">
+    <div class="faq-item"><button class="faq-question" aria-expanded="false">How do I choose my size?<span>＋</span></button><div class="faq-answer">Use the size guide as a starting point and compare the garment's own measurements where available. For a real order, consult the retailer's official size and fit details.</div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false">Can I save products?<span>＋</span></button><div class="faq-answer">Yes. Tap a product's heart icon to add it to your local wishlist. On this concept website, the wishlist is saved in your browser, not a customer account.</div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false">Can I place a real order?<span>＋</span></button><div class="faq-answer">No. This is a frontend demonstration. The cart and checkout preview are for testing the interface; they do not accept payment or create a real order.</div></div>
+   </div>
+   <div id="faqListTwo">
+    <div class="faq-item"><button class="faq-question" aria-expanded="false">Will product images always load?<span>＋</span></button><div class="faq-answer">Images are loaded from public HTTPS image sources and require an internet connection. If a source fails, the interface provides a visual fallback.</div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false">How does the theme setting work?<span>＋</span></button><div class="faq-answer">Use the moon/sun button in the header. Your choice is saved locally in the browser when local storage is available.</div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false">How do I contact Cosmos Dome?<span>＋</span></button><div class="faq-answer">Use the contact page to enter a message and preview the frontend form interaction. A real message is not sent because this website has no connected backend.</div></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- PAGE 8: CONTACT -->
+<section class="page" id="page-contact" data-page="contact">
+ <div class="container section">
+  <span class="eyebrow">LET'S CONNECT</span><h1 style="font-size:clamp(3rem,6vw,5.7rem)">Your next chapter starts here.</h1>
+  <p class="lead">Questions about the collection, sizing or the Cosmos Dome concept? Send a demo message using the form below.</p>
+  <div class="grid grid-2" style="margin-top:42px;align-items:start">
+   <div class="surface" style="padding:clamp(22px,4vw,38px)">
+    <h2 style="font-size:2rem">Send a message.</h2>
+    <p class="muted small">All fields marked * are required.</p>
+    <form id="contactForm">
+     <div class="form-grid">
+      <div class="form-group"><label for="contactName">Your name *</label><input class="field" id="contactName" name="name" required maxlength="80" placeholder="Full name"></div>
+      <div class="form-group"><label for="contactEmail">Email address *</label><input class="field" id="contactEmail" name="email" type="email" required placeholder="you@example.com"></div>
+     </div>
+     <div class="form-group"><label for="contactTopic">What is this about?</label><select class="field" id="contactTopic"><option>General inquiry</option><option>Product information</option><option>Size and fit</option><option>Collaboration</option><option>Website feedback</option></select></div>
+     <div class="form-group"><label for="contactMessage">Your message *</label><textarea class="field" id="contactMessage" required maxlength="1500" rows="5" placeholder="Tell us what is on your mind..."></textarea></div>
+     <button class="btn btn-primary" type="submit">Preview message ↗</button>
+     <p class="form-note" style="margin-top:14px">Frontend demo only. This form does not send email or store messages on a server.</p>
+    </form>
+   </div>
+   <div>
+    <div class="surface" style="padding:27px;margin-bottom:18px"><span class="eyebrow">THE COSMOS PROMISE</span><h3>Good design starts with listening.</h3><p class="muted">This concept brand is built around individual style, thoughtful details and a welcoming customer experience.</p><hr><p><strong>✦ Brand concept</strong><br><span class="muted small">Cosmos Dome — Wear Beyond Ordinary</span></p><p><strong>✉ Contact experience</strong><br><span class="muted small">Use the demo form to test validation and feedback.</span></p><p><strong>◷ Availability</strong><br><span class="muted small">No live customer service or operating hours are connected.</span></p></div>
+    <div class="banner" style="min-height:300px;padding:28px"><img loading="lazy" src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1000&q=80" alt="Cosmos Dome inspired fashion campaign"><div class="banner-content"><span class="eyebrow">STAY IN OUR ORBIT</span><h2 style="font-size:2.4rem">Good things are on the horizon.</h2><p>Sign up to preview our demo newsletter.</p><form class="newsletter" id="contactNewsletter"><input class="field" type="email" aria-label="Email for newsletter" placeholder="Email address" required><button class="btn btn-primary" type="submit">Join ↗</button></form></div></div>
+   </div>
+  </div>
+ </div>
+</section>
+</main><!-- GLOBAL FOOTER -->
+<footer class="footer">
+ <div class="container">
+  <div class="footer-grid">
+   <div>
+    <a class="brand" href="#home"><span class="brand-mark">✦</span><span class="brand-name">COSMOS DOME<span>WEAR BEYOND ORDINARY</span></span></a>
+    <p style="max-width:300px;margin-top:22px">Contemporary fashion inspired by the limitless universe. Find your frequency and make it your own.</p>
+    <p class="small">An independent fashion website concept.</p>
+   </div>
+   <div><h3>EXPLORE</h3><div class="footer-links"><a href="#shop">Shop all</a><a href="#collections">Collections</a><a href="#lookbook">Lookbook</a><a href="#about">Our story</a></div></div>
+   <div><h3>DISCOVER</h3><div class="footer-links"><a href="#journal">Journal</a><a href="#wishlist">Wishlist</a><a href="#wishlist">Size guide</a><a href="#contact">Contact</a></div></div>
+   <div><h3>STAY IN OUR ORBIT</h3><p>Get the occasional note from the Cosmos Dome universe.</p><form class="newsletter" id="footerNewsletter"><input class="field" type="email" aria-label="Newsletter email" placeholder="Your email address" required><button class="btn btn-primary" type="submit" aria-label="Subscribe">↗</button></form><p class="form-note" style="margin-top:10px;color:#aaa9c2">Demo subscription only.</p></div>
+  </div>
+  <div class="footer-bottom"><span>© <span id="yearNow">2026</span> Cosmos Dome · Website concept</span><span><a href="#contact">Contact</a> · <a href="#wishlist">Size guide</a> · <a href="#home">Back to home ↑</a></span><span>Designed for your universe ✦</span></div>
+ </div>
+</footer>
+
+<!-- PRODUCT / ARTICLE / GALLERY MODAL -->
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+ <div class="modal">
+  <button class="icon-btn modal-close" id="modalClose" aria-label="Close dialog">✕</button>
+  <div id="modalContent"></div>
+ </div>
+</div>
+
+<!-- CART DRAWER -->
+<div class="cart-drawer" id="cartDrawer" aria-hidden="true">
+ <div class="cart-shade" id="cartShade"></div>
+ <aside class="cart-panel" aria-label="Shopping cart">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:15px">
+   <div><span class="eyebrow">YOUR SELECTION</span><h2 style="font-size:2rem;margin:5px 0 20px">Shopping bag</h2></div>
+   <button class="icon-btn" id="cartClose" aria-label="Close cart">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div id="cartSummary">
+   <div class="cart-total"><span>Subtotal</span><span id="cartSubtotal">₹0</span></div>
+   <p class="form-note">Shipping and taxes are not calculated. This is a frontend-only demo.</p>
+   <button class="btn btn-primary" id="checkoutBtn" style="width:100%">Preview checkout ↗</button>
+  </div>
+ </aside>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+
+<script>
+/* =========================================================
+   COSMOS DOME — JAVASCRIPT ES6
+   All shopping actions are frontend demonstrations.
+========================================================= */
+"use strict";
+
+const $ = (selector, root = document) => root.querySelector(selector);
+const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+
+const money = value => "₹" + Number(value).toLocaleString("en-IN");
+
+const imageFallback = "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=70";
+
+const products = [
+ {id:1,name:"Orbit Essential Tee",category:"Essentials",price:899,old:1199,badge:"BESTSELLER",color:"#e9e4d9",desc:"A versatile everyday T-shirt concept with a relaxed silhouette.",image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=850&q=80"},
+ {id:2,name:"Nova Oversized Shirt",category:"Streetwear",price:1499,old:1899,badge:"NEW",color:"#d7d5d0",desc:"A contemporary oversized shirt designed for easy layering.",image:"https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=850&q=80"},
+ {id:3,name:"Midnight Utility Jacket",category:"Outerwear",price:3299,old:3999,badge:"COSMIC EDIT",color:"#333548",desc:"A structured outer layer with a clean, urban aesthetic.",image:"https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=850&q=80"},
+ {id:4,name:"Lunar Street Hoodie",category:"Streetwear",price:2199,old:2699,badge:"POPULAR",color:"#a8a5b8",desc:"A relaxed hoodie concept for everyday streetwear styling.",image:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=850&q=80"},
+ {id:5,name:"Stellar Relaxed Denim",category:"Essentials",price:1899,old:2299,badge:"EVERYDAY",color:"#434e72",desc:"Relaxed denim-inspired styling for an effortless daily look.",image:"https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=850&q=80"},
+ {id:6,name:"Nebula Graphic Tee",category:"Streetwear",price:1099,old:1399,badge:"NEW",color:"#17182b",desc:"A graphic-led wardrobe concept inspired by the night sky.",image:"https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=850&q=80"},
+ {id:7,name:"Eclipse Bomber Jacket",category:"Outerwear",price:3599,old:4299,badge:"STATEMENT",color:"#27283c",desc:"A bold outerwear silhouette with a modern streetwear feel.",image:"https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=850&q=80"},
+ {id:8,name:"Cosmic Everyday Cap",category:"Accessories",price:699,old:899,badge:"ESSENTIAL",color:"#27283c",desc:"A versatile finishing touch for casual everyday outfits.",image:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=850&q=80"},
+ {id:9,name:"Orbit Minimal Tote",category:"Accessories",price:799,old:999,badge:"DAILY CARRY",color:"#c8bdb0",desc:"A minimal carry-all concept for everyday essentials.",image:"https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=850&q=80"},
+ {id:10,name:"Afterglow Sweatshirt",category:"Essentials",price:1799,old:2199,badge:"SOFT LAYERS",color:"#c2b9d6",desc:"A versatile sweatshirt concept for relaxed, layered looks.",image:"https://images.unsplash.com/photo-1578681994506-b8f463449011?auto=format&fit=crop&w=850&q=80"},
+ {id:11,name:"Stardust Knitwear",category:"Essentials",price:1999,old:2499,badge:"TEXTURE",color:"#aaa4a1",desc:"A textured knitwear concept that adds depth to simple outfits.",image:"https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=850&q=80"},
+ {id:12,name:"Velocity Cargo Pants",category:"Streetwear",price:1699,old:2099,badge:"URBAN FIT",color:"#777667",desc:"Utility-inspired trousers for a practical urban silhouette.",image:"https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&w=850&q=80"},
+ {id:13,name:"Solar Overshirt",category:"Outerwear",price:2399,old:2999,badge:"LAYERING",color:"#b9ad9a",desc:"A light overshirt concept designed to bridge seasons.",image:"https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=850&q=80"},
+ {id:14,name:"Moonphase Crossbody",category:"Accessories",price:1199,old:1499,badge:"ACCESSORY",color:"#343443",desc:"A compact accessory concept for everyday essentials.",image:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=850&q=80"},
+ {id:15,name:"Gravity Longline Tee",category:"Essentials",price:999,old:1299,badge:"RELAXED",color:"#c6c2d1",desc:"An elongated T-shirt silhouette for effortless combinations.",image:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=850&q=80"},
+ {id:16,name:"Deep Space Denim Jacket",category:"Outerwear",price:2899,old:3499,badge:"CLASSIC",color:"#555b79",desc:"A denim-inspired layer with a timeless, casual attitude.",image:"https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=850&q=80"},
+ {id:17,name:"Orbit Ribbed Tank",category:"Essentials",price:649,old:849,badge:"LAYERING",color:"#e0d8cf",desc:"A simple base layer concept for warm days and layered looks.",image:"https://images.unsplash.com/photo-1583743814966-8936f37f4678?auto=format&fit=crop&w=850&q=80"},
+ {id:18,name:"Astral Weekend Bag",category:"Accessories",price:1799,old:2299,badge:"TRAVEL",color:"#393748",desc:"A travel-inspired bag concept for weekends and daily carry.",image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=850&q=80"},
+ {id:19,name:"Cosmic Track Jacket",category:"Streetwear",price:2299,old:2799,badge:"SPORT INSPIRED",color:"#4a4c67",desc:"A sporty layer concept with an easy contemporary profile.",image:"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=850&q=80"},
+ {id:20,name:"Dusk Straight Trousers",category:"Essentials",price:1599,old:1999,badge:"VERSATILE",color:"#aaa49d",desc:"Straight-leg trousers designed as a versatile outfit foundation.",image:"https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=850&q=80"},
+ {id:21,name:"Supernova Beanie",category:"Accessories",price:549,old:699,badge:"COLD WEATHER",color:"#3e3c52",desc:"A simple cold-weather accessory concept.",image:"https://images.unsplash.com/photo-1576871337622-98d48d1cf531?auto=format&fit=crop&w=850&q=80"},
+ {id:22,name:"After Hours Jacket",category:"Outerwear",price:3199,old:3899,badge:"EVENING EDIT",color:"#222337",desc:"A contemporary jacket concept with a refined nighttime mood.",image:"https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=850&q=80"},
+ {id:23,name:"Satellite Print Shirt",category:"Streetwear",price:1399,old:1799,badge:"PRINT SERIES",color:"#a59ab9",desc:"A statement shirt concept inspired by celestial graphics.",image:"https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=850&q=80"},
+ {id:24,name:"Starlight Mini Pouch",category:"Accessories",price:499,old:649,badge:"SMALL ESSENTIAL",color:"#c6bddc",desc:"A compact pouch concept for small daily necessities.",image:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=850&q=80"}
+];
+
+const articleData = {
+ wardrobe:{
+  title:"Build a wardrobe that feels like you",
+  intro:"A personal wardrobe is less about owning more and more about understanding what works for you.",
+  body:"Start with the pieces you naturally reach for. Notice the shapes, fabrics and colors that make getting dressed easier. Add versatile foundations first, then bring in statement items that express your personality. A useful wardrobe supports your real routines instead of asking you to become someone else."
+ },
+ combinations:{
+  title:"The art of unexpected combinations",
+  intro:"Personal style often appears in the contrast between two things that should not work together—but do.",
+  body:"Try pairing a structured outer layer with a relaxed base. Balance a bold graphic with quiet accessories. Combine different textures while keeping the overall silhouette intentional. There is no single correct formula: experiment with the pieces you already own and notice which combinations feel authentic."
+ },
+ essentials:{
+  title:"Why the simplest pieces work hard",
+  intro:"Versatile essentials create the foundation for countless outfits.",
+  body:"A well-chosen basic can be worn on its own, layered under a jacket or used to balance a more expressive piece. Think about fit, comfort and how often you will wear an item. The most useful wardrobe is the one that makes your everyday decisions easier."
+ },
+ layering:{
+  title:"Layering without the bulk",
+  intro:"Good layering is about proportion, not simply adding more clothes.",
+  body:"Begin with a comfortable base layer. Add a mid-layer with enough room to move, then finish with outerwear appropriate for the weather. Keep one clear focal point and experiment with differences in length and texture. Comfort and mobility matter more than following a rigid styling rule."
+ },
+ silhouette:{
+  title:"Finding your signature silhouette",
+  intro:"The shape of an outfit can change how it feels before you add any accessories.",
+  body:"Notice the proportions you enjoy wearing: relaxed tops with straight trousers, structured jackets over softer layers, or monochrome outfits with varied textures. Take note of what makes you feel comfortable and confident. A signature silhouette is a personal discovery, not a universal trend."
+ },
+ inspiration:{
+  title:"Dress for the day you want",
+  intro:"An outfit can be a small act of intention at the start of the day.",
+  body:"Choose pieces that suit your plans, your comfort and your own sense of expression. Sometimes that means a clean, simple uniform; sometimes it means trying a new combination. Let your clothing support the day you are preparing for rather than dictate who you should be."
+ }
+};
+
+let cart = [];
+let wishlist = new Set();
+let activeCategory = "All";
+let lastFocus = null;
+let toastTimer = null;
+
+function safeLoad(key, fallback) {
+ try {
+  const value = localStorage.getItem(key);
+  return value === null ? fallback : JSON.parse(value);
+ } catch (error) {
+  return fallback;
+ }
+}
+
+function safeSave(key, value) {
+ try { localStorage.setItem(key, JSON.stringify(value)); }
+ catch (error) { /* Local storage can be unavailable in private browsing. */ }
+}
+
+function notify(message) {
+ const toast = $("#toast");
+ if (!toast) return;
+ toast.textContent = message;
+ toast.classList.add("show");
+ clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => toast.classList.remove("show"), 2700);
+}
+
+function escapeHTML(value) {
+ return String(value).replace(/[&<>"']/g, char => ({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[char]));
+}
+
+function productById(id) {
+ return products.find(product => product.id === Number(id));
+}
+
+function persistWishlist() {
+ safeSave("cosmos-dome-wishlist", [...wishlist]);
+}
+
+function loadSavedData() {
+ const storedWishlist = safeLoad("cosmos-dome-wishlist", []);
+ wishlist = new Set(Array.isArray(storedWishlist) ? storedWishlist.map(Number) : []);
+ const storedCart = safeLoad("cosmos-dome-cart", []);
+ cart = Array.isArray(storedCart)
+  ? storedCart.filter(item => productById(item.id)).map(item => ({
+    id:Number(item.id),qty:Math.max(1,Math.min(20,Number(item.qty)||1))
+   }))
+  : [];
+}
+
+function productCard(product) {
+ const saved = wishlist.has(product.id);
+ return `
+ <article class="card product-card">
+  <div class="product-image">
+   <img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)}" loading="lazy" data-product-image="${product.id}">
+   <span class="product-badge">${escapeHTML(product.badge)}</span>
+   <button class="icon-btn product-heart ${saved ? "saved" : ""}" data-wishlist="${product.id}" aria-label="${saved ? "Remove from" : "Add to"} wishlist" aria-pressed="${saved}">${saved ? "♥" : "♡"}</button>
+  </div>
+  <div class="product-info">
+   <div class="muted small">${escapeHTML(product.category)}</div>
+   <h3>${escapeHTML(product.name)}</h3>
+   <div class="muted small">Concept product · Sample listing</div>
+   <div class="price-row"><div><span class="price">${money(product.price)}</span><span class="old-price">${money(product.old)}</span></div><button class="icon-btn" data-product-detail="${product.id}" aria-label="View ${escapeHTML(product.name)}">↗</button></div>
+   <div class="product-colors" aria-label="Illustrative color"><span class="color-dot" style="background:${product.color}"></span><span class="color-dot" style="background:#e5e2f0"></span><span class="color-dot" style="background:#222337"></span></div>
+   <button class="btn btn-primary" data-add="${product.id}" style="width:100%;margin-top:14px">Add to bag · ${money(product.price)}</button>
+  </div>
+ </article>`;
+}
+
+function renderProducts(list, targetId) {
+ const target = $("#" + targetId);
+ if (target) target.innerHTML = list.map(productCard).join("");
+}
+
+function renderShop() {
+ const search = ($("#productSearch")?.value || "").trim().toLowerCase();
+ const category = $("#categoryFilter")?.value || activeCategory;
+ let list = products.filter(product => {
+  const matchesCategory = category === "All" || product.category === category;
+  const matchesSearch = (product.name + " " + product.category + " " + product.desc).toLowerCase().includes(search);
+  return matchesCategory && matchesSearch;
+ });
+ const sort = $("#sortFilter")?.value || "featured";
+ if (sort === "low") list.sort((a,b) => a.price-b.price);
+ if (sort === "high") list.sort((a,b) => b.price-a.price);
+ if (sort === "name") list.sort((a,b) => a.name.localeCompare(b.name));
+ renderProducts(list, "shopProducts");
+ $("#resultCount").textContent = `${list.length} pieces`;
+ $("#shopEmpty").hidden = list.length !== 0;
+ $$("#quickFilters [data-category]").forEach(button => {
+  button.classList.toggle("active", button.dataset.category === category);
+ });
+}
+
+function renderWishlist() {
+ const list = products.filter(product => wishlist.has(product.id));
+ renderProducts(list, "wishlistProducts");
+ $("#wishlistEmpty").hidden = list.length !== 0;
+}
+
+function renderCart() {
+ const count = cart.reduce((total,item) => total + item.qty, 0);
+ $("#cartCount").textContent = count;
+ const itemsRoot = $("#cartItems");
+ if (!cart.length) {
+  itemsRoot.innerHTML = `<div class="empty-state"><h3>Your bag is waiting.</h3><p>Explore the collection and add a few favorites.</p><button class="btn btn-primary" data-cart-shop>Explore the shop ↗</button></div>`;
+ } else {
+  itemsRoot.innerHTML = cart.map(item => {
+   const product = productById(item.id);
+   return `<div class="cart-line">
+    <img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)}" loading="lazy">
+    <div><strong style="font-size:.88rem">${escapeHTML(product.name)}</strong><div class="muted small">${money(product.price)} each</div>
+    <div class="qty-controls"><button data-qty="${product.id}" data-change="-1" aria-label="Decrease quantity">−</button><span>${item.qty}</span><button data-qty="${product.id}" data-change="1" aria-label="Increase quantity">+</button></div>
+    </div>
+    <button class="icon-btn" data-remove="${product.id}" aria-label="Remove ${escapeHTML(product.name)}">✕</button>
+   </div>`;
+  }).join("");
+ }
+ const total = cart.reduce((sum,item) => sum + productById(item.id).price*item.qty, 0);
+ $("#cartSubtotal").textContent = money(total);
+ $("#checkoutBtn").disabled = !cart.length;
+ $("#checkoutBtn").style.opacity = cart.length ? "1" : ".5";
+ safeSave("cosmos-dome-cart", cart);
+}
+
+function addToCart(id) {
+ const product = productById(id);
+ if (!product) return;
+ const existing = cart.find(item => item.id === product.id);
+ if (existing) {
+  if (existing.qty >= 20) return notify("Maximum demo quantity reached.");
+  existing.qty++;
+ } else {
+  cart.push({id:product.id,qty:1});
+ }
+ renderCart();
+ notify(`${product.name} added to your demo bag.`);
+}
+
+function changeQuantity(id, amount) {
+ const item = cart.find(entry => entry.id === Number(id));
+ if (!item) return;
+ item.qty += Number(amount);
+ if (item.qty <= 0) cart = cart.filter(entry => entry.id !== Number(id));
+ if (item.qty > 20) item.qty = 20;
+ renderCart();
+}
+
+function toggleWishlist(id) {
+ id = Number(id);
+ if (!productById(id)) return;
+ if (wishlist.has(id)) {
+  wishlist.delete(id);
+  notify("Removed from your wishlist.");
+ } else {
+  wishlist.add(id);
+  notify("Saved to your wishlist.");
+ }
+ persistWishlist();
+ renderProducts(products.slice(0,4), "homeProducts");
+ renderProducts(products.slice(4,8), "collectionProducts");
+ renderShop();
+ renderWishlist();
+}
+
+/* Theme: saved preference takes precedence over system preference. */
+function setTheme(theme) {
+ const actual = theme === "dark" ? "dark" : "light";
+ document.documentElement.dataset.theme = actual;
+ $("#themeToggle").textContent = actual === "dark" ? "☀" : "☾";
+ $("#themeToggle").setAttribute("aria-label", actual === "dark" ? "Switch to light theme" : "Switch to dark theme");
+ try { localStorage.setItem("cosmos-dome-theme", actual); } catch (error) {}
+}
+function initializeTheme() {
+ let saved = null;
+ try { saved = localStorage.getItem("cosmos-dome-theme"); } catch (error) {}
+ const preferred = saved || (window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+ setTheme(preferred);
+}
+
+/* Eight interconnected page views with hash navigation. */
+const validRoutes = ["home","shop","collections","lookbook","about","journal","wishlist","contact"];
+
+function routeFromHash() {
+ const route = location.hash.replace(/^#\/?/, "").split("?")[0];
+ return validRoutes.includes(route) ? route : "home";
+}
+
+function navigate(route) {
+ if (!validRoutes.includes(route)) route = "home";
+ if (location.hash !== "#" + route) location.hash = route;
+ else showPage(route);
+}
+
+function showPage(route) {
+ if (!validRoutes.includes(route)) route = "home";
+ $$(".page").forEach(page => {
+  const active = page.dataset.page === route;
+  page.classList.toggle("active", active);
+  page.setAttribute("aria-hidden", String(!active));
+ });
+ $$(".nav-links a").forEach(link => {
+  const active = link.dataset.route === route;
+  link.classList.toggle("active", active);
+  if (active) link.setAttribute("aria-current","page");
+  else link.removeAttribute("aria-current");
+ });
+ $("#navLinks").classList.remove("open");
+ $("#menuToggle").setAttribute("aria-expanded","false");
+ $("#menuToggle").setAttribute("aria-label","Open navigation menu");
+ window.scrollTo({top:0,behavior:window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+ if (route === "wishlist") renderWishlist();
+ if (route === "shop") renderShop();
+}
+
+function openModal(html) {
+ lastFocus = document.activeElement;
+ $("#modalContent").innerHTML = html;
+ $("#modalBackdrop").classList.add("open");
+ document.body.style.overflow = "hidden";
+ $("#modalClose").focus();
+}
+
+function closeModal() {
+ $("#modalBackdrop").classList.remove("open");
+ document.body.style.overflow = "";
+ if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+}
+
+function openProduct(id) {
+ const product = productById(id);
+ if (!product) return;
+ openModal(`
+  <span class="eyebrow">${escapeHTML(product.category)} · DEMO PRODUCT</span>
+  <h2 id="modalTitle">${escapeHTML(product.name)}</h2>
+  <img class="modal-image" src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)}">
+  <p>${escapeHTML(product.desc)}</p>
+  <p><strong style="font-size:1.5rem">${money(product.price)}</strong> <span class="old-price">${money(product.old)}</span></p>
+  <p class="form-note">Illustrative product listing. The image and product specification do not guarantee a real item is available.</p>
+  <label class="small" for="productSize"><strong>Choose a demo size</strong></label>
+  <div class="size-options" id="modalSizes" style="margin:12px 0 20px">
+   ${["XS","S","M","L","XL"].map((size,index) => `<button class="size-option ${index===2?"active":""}" type="button" data-size="${size}" aria-pressed="${index===2}">${size}</button>`).join("")}
+  </div>
+  <button class="btn btn-primary" id="modalAdd" style="width:100%">Add to demo bag · ${money(product.price)}</button>
+ `);
+ $("#modalTitle").id = "modalTitle";
+ $("#modalSizes").dataset.selectedSize = "M";
+ $("#modalAdd").addEventListener("click", () => {
+  addToCart(product.id);
+  closeModal();
+  openCart();
+ });
+}
+
+function openArticle(key) {
+ const article = articleData[key];
+ if (!article) return;
+ openModal(`<span class="eyebrow">THE COSMOS JOURNAL · SAMPLE EDITORIAL</span>
+ <h2 id="modalTitle">${escapeHTML(article.title)}</h2>
+ <p class="lead">${escapeHTML(article.intro)}</p>
+ <p>${escapeHTML(article.body)}</p>
+ <div class="notice">This is original sample content for the Cosmos Dome website concept.</div>
+ <button class="btn btn-primary" id="articleClose" style="margin-top:22px">Continue exploring</button>`);
+ $("#articleClose").addEventListener("click",closeModal);
+}
+
+function openCart() {
+ $("#cartDrawer").classList.add("open");
+ $("#cartDrawer").setAttribute("aria-hidden","false");
+ document.body.style.overflow = "hidden";
+ $("#cartClose").focus();
+}
+function closeCart() {
+ $("#cartDrawer").classList.remove("open");
+ $("#cartDrawer").setAttribute("aria-hidden","true");
+ document.body.style.overflow = "";
+ $("#cartOpen").focus();
+}
+
+/* Event delegation keeps dynamically rendered product cards functional. */
+document.addEventListener("click", event => {
+ const add = event.target.closest("[data-add]");
+ const wish = event.target.closest("[data-wishlist]");
+ const detail = event.target.closest("[data-product-detail]");
+ const qty = event.target.closest("[data-qty]");
+ const remove = event.target.closest("[data-remove]");
+ const size = event.target.closest("[data-size]");
+ const shopFromCart = event.target.closest("[data-cart-shop]");
+
+ if (add) addToCart(add.dataset.add);
+ if (wish) toggleWishlist(wish.dataset.wishlist);
+ if (detail) openProduct(detail.dataset.productDetail);
+ if (qty) changeQuantity(qty.dataset.qty, qty.dataset.change);
+ if (remove) {
+  cart = cart.filter(item => item.id !== Number(remove.dataset.remove));
+  renderCart();
+  notify("Removed from your demo bag.");
+ }
+ if (shopFromCart) {
+  closeCart();
+  navigate("shop");
+ }
+ if (size) {
+  $$("#modalSizes [data-size]").forEach(button => {
+   const active = button === size;
+   button.classList.toggle("active",active);
+   button.setAttribute("aria-pressed",String(active));
+  });
+  $("#modalSizes").dataset.selectedSize = size.dataset.size;
+ }
+});
+
+document.addEventListener("error", event => {
+ const image = event.target;
+ if (image instanceof HTMLImageElement && !image.dataset.fallbackApplied) {
+  image.dataset.fallbackApplied = "true";
+  image.src = imageFallback;
+  image.style.background = "var(--surface2)";
+ }
+}, true);
+
+/* Mobile navigation and theme. */
+$("#menuToggle").addEventListener("click", () => {
+ const menu = $("#navLinks");
+ const isOpen = menu.classList.toggle("open");
+ $("#menuToggle").setAttribute("aria-expanded",String(isOpen));
+ $("#menuToggle").setAttribute("aria-label",isOpen ? "Close navigation menu" : "Open navigation menu");
+ $("#menuToggle").textContent = isOpen ? "✕" : "☰";
+});
+$("#themeToggle").addEventListener("click", () => {
+ setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+});
+$("#cartOpen").addEventListener("click",openCart);
+$("#cartClose").addEventListener("click",closeCart);
+$("#cartShade").addEventListener("click",closeCart);
+$("#modalClose").addEventListener("click",closeModal);
+$("#modalBackdrop").addEventListener("click",event => {
+ if (event.target === $("#modalBackdrop")) closeModal();
+});
+$("#wishlistNav").addEventListener("click",() => navigate("wishlist"));
+$("#searchOpen").addEventListener("click",() => {
+ navigate("shop");
+ setTimeout(() => $("#productSearch").focus(),100);
+});
+$("#checkoutBtn").addEventListener("click",() => {
+ if (!cart.length) return notify("Your demo bag is empty.");
+ closeCart();
+ openModal(`<span class="eyebrow">FRONTEND DEMONSTRATION</span>
+ <h2 id="modalTitle">Checkout preview</h2>
+ <p>This concept website does not process payments or create real orders.</p>
+ <div class="notice">Demo subtotal: ${$("#cartSubtotal").textContent}<br>Shipping, taxes and payment processing are not connected.</div>
+ <p class="muted small">No payment information is requested or stored.</p>
+ <button class="btn btn-primary" id="checkoutFinish" style="width:100%">Return to shopping</button>`);
+ $("#checkoutFinish").addEventListener("click",() => {
+  closeModal();
+  navigate("shop");
+ });
+});
+
+/* Shop filtering and category links. */
+$("#productSearch").addEventListener("input",renderShop);
+$("#categoryFilter").addEventListener("change",() => {
+ activeCategory = $("#categoryFilter").value;
+ renderShop();
+});
+$("#sortFilter").addEventListener("change",renderShop);
+$("#quickFilters").addEventListener("click",event => {
+ const button = event.target.closest("[data-category]");
+ if (!button) return;
+ activeCategory = button.dataset.category;
+ $("#categoryFilter").value = activeCategory;
+ renderShop();
+});
+$("#clearFilters").addEventListener("click",() => {
+ $("#productSearch").value = "";
+ $("#categoryFilter").value = "All";
+ $("#sortFilter").value = "featured";
+ activeCategory = "All";
+ renderShop();
+});
+$$("[data-filter-link]").forEach(link => {
+ link.addEventListener("click",() => {
+  const category = link.dataset.filterLink;
+  activeCategory = category === "Outerwear" ? "Outerwear" : category === "Essentials" ? "Essentials" : "Streetwear";
+  $("#categoryFilter").value = activeCategory;
+  renderShop();
+ });
+});
+
+/* Lookbook lightbox. */
+$("#lookbookGrid").addEventListener("click",event => {
+ const item = event.target.closest(".lookbook-item");
+ if (!item) return;
+ const image = item.dataset.image;
+ const caption = $(".lookbook-caption",item)?.textContent || "Cosmos Dome editorial";
+ openModal(`<span class="eyebrow">COSMOS DOME LOOKBOOK</span>
+ <h2 id="modalTitle">${escapeHTML(caption)}</h2>
+ <img class="modal-image" src="${escapeHTML(image)}" alt="${escapeHTML(caption)}">
+ <p class="muted small">Editorial inspiration from the Cosmos Dome concept collection.</p>`);
+});
+
+/* Journal cards open their corresponding article. */
+document.addEventListener("click",event => {
+ const button = event.target.closest(".article-open");
+ if (button) openArticle(button.dataset.article);
+});
+
+/* Accessible FAQ accordion. */
+$$(".faq-question").forEach(button => {
+ button.addEventListener("click",() => {
+  const item = button.closest(".faq-item");
+  const opening = !item.classList.contains("open");
+  item.classList.toggle("open",opening);
+  button.setAttribute("aria-expanded",String(opening));
+ });
+});
+
+/* Demo-only form interactions: never claim that a message was sent. */
+$("#contactForm").addEventListener("submit",event => {
+ event.preventDefault();
+ const form = event.currentTarget;
+ if (!form.reportValidity()) return;
+ const name = $("#contactName").value.trim();
+ const message = $("#contactMessage").value.trim();
+ if (!name || !message) return notify("Please complete all required fields.");
+ openModal(`<span class="eyebrow">FRONTEND FORM PREVIEW</span>
+ <h2 id="modalTitle">Thank you, ${escapeHTML(name)}.</h2>
+ <p>Your demo message is ready to preview:</p>
+ <div class="notice">${escapeHTML(message)}</div>
+ <p class="muted small">No message was sent. Connect a secure backend or email service to enable real submissions.</p>
+ <button class="btn btn-primary" id="contactDone">Done</button>`);
+ $("#contactDone").addEventListener("click",() => {
+  closeModal();
+  form.reset();
+ });
+});
+
+function setupNewsletter(formId) {
+ const form = $("#" + formId);
+ if (!form) return;
+ form.addEventListener("submit",event => {
+  event.preventDefault();
+  if (!form.reportValidity()) return;
+  const input = $('input[type="email"]',form);
+  if (!input || !input.value.trim()) return notify("Please enter a valid email address.");
+  notify("Demo subscription preview complete — no email was stored.");
+  form.reset();
+ });
+}
+setupNewsletter("contactNewsletter");
+setupNewsletter("footerNewsletter");
+
+/* Escape closes overlays; focus is returned to the invoking control. */
+document.addEventListener("keydown",event => {
+ if (event.key === "Escape") {
+  if ($("#modalBackdrop").classList.contains("open")) closeModal();
+  else if ($("#cartDrawer").classList.contains("open")) closeCart();
+  else {
+   $("#navLinks").classList.remove("open");
+   $("#menuToggle").setAttribute("aria-expanded","false");
+   $("#menuToggle").textContent = "☰";
+  }
+ }
+ if ($("#modalBackdrop").classList.contains("open") && event.key === "Tab") {
+  const focusable = $$('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled])',$("#modalBackdrop"))
+   .filter(element => element.offsetParent !== null);
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length-1];
+  if (event.shiftKey && document.activeElement === first) {
+   event.preventDefault(); last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+   event.preventDefault(); first.focus();
+  }
+ }
+});
+
+/* Header routing and back-to-top behavior. */
+window.addEventListener("hashchange",() => showPage(routeFromHash()));
+window.addEventListener("scroll",() => {
+ $("#backTop").classList.toggle("visible",window.scrollY > 550);
+},{passive:true});
+$("#backTop").addEventListener("click",() => window.scrollTo({
+ top:0,behavior:window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+}));
+
+/* Basic entrance counters that do not hide essential content. */
+function animateCounters() {
+ $$("[data-count]").forEach(element => {
+  const finalValue = Number(element.dataset.count);
+  if (!Number.isFinite(finalValue)) return;
+  element.textContent = String(finalValue).padStart(2,"0");
+ });
+}
+
+/* Initialize the entire concept website. */
+function initCosmosDome() {
+ initializeTheme();
+ loadSavedData();
+ renderProducts(products.slice(0,4),"homeProducts");
+ renderProducts(products.slice(4,8),"collectionProducts");
+ renderShop();
+ renderWishlist();
+ renderCart();
+ animateCounters();
+ $("#yearNow").textContent = new Date().getFullYear();
+ showPage(routeFromHash());
+}
+
+initCosmosDome();
+</script>
+</body>
+</html>
